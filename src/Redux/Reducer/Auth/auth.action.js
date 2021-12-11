@@ -37,7 +37,7 @@ export const signUp = (userData) => async (dispatch) => {
       data: { credentials: userData },
     });
 
-    window.location.href = "http://18.216.155.156:3080/delivery";
+    window.location.href = "https://zomatoclone-netlify.netlify.app/delivery";
 
     localStorage.setItem(
       "zomatoUser",
@@ -56,7 +56,7 @@ export const googleAuth = (token) => async (dispatch) => {
 
     dispatch({ type: GOOGLE_AUTH, payload: {} });
 
-    window.location.href = "http://18.216.155.156:3080/delivery";
+    window.location.href = "https://zomatoclone-netlify.netlify.app/delivery";
   } catch (error) {
     return dispatch({ type: "ERROR", payload: error });
   }
@@ -66,7 +66,7 @@ export const signOut = () => async (dispatch) => {
   try {
     localStorage.removeItem("zomatoUser");
     clearUser();
-    window.location.href = "http://18.216.155.156:3080/delivery";
+    window.location.href = "https://zomatoclone-netlify.netlify.app/delivery";
 
     return dispatch({ type: SIGN_OUT, payload: {} });
   } catch (error) {
