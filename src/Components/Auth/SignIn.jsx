@@ -28,10 +28,6 @@ export default function SignIn({ isOpen, setIsOpen }) {
   }
 
   const submit = () => {
-    setUserData({
-      email: "",
-      password: "",
-    });
     console.log(userData);
     dispatch(signIn(userData));
 
