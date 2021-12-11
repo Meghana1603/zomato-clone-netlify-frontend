@@ -21,6 +21,7 @@ export default function SignIn({ isOpen, setIsOpen }) {
 
   const handleChange = (e) => {
     setUserData((prev) => ({ ...prev, [e.target.id]: e.target.value }));
+    console.log(userData);
   };
 
   function closeModal() {
@@ -30,8 +31,12 @@ export default function SignIn({ isOpen, setIsOpen }) {
   const submit = () => {
     console.log(userData);
     dispatch(signIn(userData));
-
+    setUserData({
+      email: "",
+      password: "",
+    });
     closeModal();
+    console.log(userData);
   };
 
   const googleSignIn = () =>
