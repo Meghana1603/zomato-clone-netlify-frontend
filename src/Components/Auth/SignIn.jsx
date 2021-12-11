@@ -32,6 +32,7 @@ export default function SignIn({ isOpen, setIsOpen }) {
       email: "",
       password: "",
     });
+    console.log(userData);
     dispatch(signIn(userData));
 
     closeModal();
@@ -118,10 +119,6 @@ export default function SignIn({ isOpen, setIsOpen }) {
                     >
                       Sign In
                     </div>
-                    <p className="forgot-password text-right text-blue-600 underline">
-                    <Link to={`/forgot`}> Forgot password</Link>
-
-                    </p>
                   </form>
                 </div>
               </div>

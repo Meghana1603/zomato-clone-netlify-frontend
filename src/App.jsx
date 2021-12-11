@@ -23,7 +23,6 @@ import CheckoutLayoutHOC from "./HOC/Checkout.HOC";
 import Checkout from "./pages/Checkout";
 import RestaurantRedirect from "./pages/RestaurantRedirect";
 import GoogleAuth from "./pages/GoogleAuth";
-import  Forgot  from "./Components/Auth/forgot";
 
 function App() {
   const dispatch = useDispatch();
@@ -35,7 +34,6 @@ function App() {
       <Route path="/" exact>
         <Redirect to="/delivery" />
       </Route>
-      <Route path="/forgot" exact component={Forgot}/>
       <HomeLayoutHOC path="/:type" exact component={Home} />
       <HomeLayoutHOC path="/google/:token" exact component={GoogleAuth} />
       <Route path="/restaurant/:id" exact component={RestaurantRedirect} />

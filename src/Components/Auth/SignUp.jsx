@@ -39,6 +39,7 @@ export default function SignUp({ isOpen, setIsOpen }) {
         fullName: userData.fullname,
       })
     );
+    
     closeModal();
   };
 
