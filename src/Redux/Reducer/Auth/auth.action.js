@@ -18,6 +18,8 @@ export const signIn = (userData) => async (dispatch) => {
 
     getMySelf();
 
+    window.location.href = "https://zomatoclone-netlify.netlify.app/delivery";
+
     localStorage.setItem(
       "zomatoUser",
       JSON.stringify({ token: User.data.token })
