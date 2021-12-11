@@ -27,11 +27,7 @@ export default function SignUp({ isOpen, setIsOpen }) {
   }
 
   const submit = () => {
-    setUserData({
-      email: "",
-      password: "",
-      fullname: "",
-    });
+    console.log(userData);
     dispatch(
       signUp({
         email: userData.email,
