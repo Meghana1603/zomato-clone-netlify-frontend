@@ -27,7 +27,11 @@ export default function SignUp({ isOpen, setIsOpen }) {
   }
 
   const submit = () => {
-    console.log(userData);
+    setUserData({
+      email: "",
+      password: "",
+      fullname: "",
+    });
     dispatch(
       signUp({
         email: userData.email,
@@ -35,6 +39,7 @@ export default function SignUp({ isOpen, setIsOpen }) {
         fullName: userData.fullname,
       })
     );
+    console.log(userData)
     
     closeModal();
   };
