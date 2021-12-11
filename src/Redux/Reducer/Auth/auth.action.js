@@ -36,7 +36,7 @@ export const signUp = (userData) => async (dispatch) => {
       url: "https://zomato-clone--heroku-backend.herokuapp.com/auth/signup",
       data: { credentials: userData },
     });
-
+    console.log(data);
     window.location.href = "https://zomatoclone-netlify.netlify.app/delivery";
 
     localStorage.setItem(
