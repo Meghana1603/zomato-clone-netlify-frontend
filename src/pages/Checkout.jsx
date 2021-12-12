@@ -45,7 +45,7 @@ function Checkout() {
       image:
         "https://b.zmtcdn.com/web_assets/b40b97e677bc7b2ca77c58c61db266fe1603954218.png",
       handler: function (data) {
-        console.log(reduxStateCart) ;
+        //console.log(reduxStateCart) ;
         alert("Payment Done");
         // console.log(data.razorpay_payment_id);
         dispatch(orderPlaced(reduxStateCart, data.razorpay_payment_id));
@@ -61,10 +61,12 @@ function Checkout() {
 
     let razorPay = new window.Razorpay(options);
     razorPay.open();
+    console.log(reduxStateCart) ;
+    console.log(reduxState) ;
     reduxState.map((food) => (
       deleteCart(food._id)
     ));
-    window.location.href = "https://zomatoclone-netlify.netlify.app/delivery";
+    //window.location.href = "https://zomatoclone-netlify.netlify.app/delivery";
 
   };
 
