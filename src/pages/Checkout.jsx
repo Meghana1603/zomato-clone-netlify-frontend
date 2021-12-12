@@ -66,7 +66,9 @@ function Checkout() {
     reduxState.map((food) => (
       deleteFoodFromCart(food._id)
     ));
-
+    console.log(reduxState,"food") ;
+    reduxState={}
+    console.log(reduxState,"food") ;
   };
 
   return (
