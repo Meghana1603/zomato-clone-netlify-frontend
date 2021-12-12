@@ -21,6 +21,7 @@ function FoodItem(props) {
 
   return (
     <>
+    {props? (<>
       <div className="flex items-center justify-between">
         <h5>{props.name}</h5>
         <div className="flex items-center gap-2">
@@ -48,7 +49,9 @@ function FoodItem(props) {
           />
         </div>
       </div>
-      <hr className="my-2" />
+      <hr className="my-2" /> </>)
+      : (<>Cart is Empty</>)
+    }
     </>
   );
 }
