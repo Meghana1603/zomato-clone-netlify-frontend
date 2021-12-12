@@ -45,7 +45,7 @@ function Checkout() {
         "https://b.zmtcdn.com/web_assets/b40b97e677bc7b2ca77c58c61db266fe1603954218.png",
       handler: function (data) {
         //console.log(reduxStateCart) ;
-        await alert("Payment Done");
+        alert("Payment Done");
 
         // console.log(data.razorpay_payment_id);
         dispatch(orderPlaced(reduxStateCart, data.razorpay_payment_id));
