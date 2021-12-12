@@ -6,10 +6,11 @@ import { useHistory } from "react-router-dom";
 // Redux
 import { useSelector } from "react-redux";
 
-let history = useHistory();
+
 
 function CheckoutNavbar() {
   const reduxState = useSelector((globalStore) => globalStore.user.user);
+  let history = useHistory();
   return (
     <>
       <nav className="px-4 py-2 flex bg-white shadow-md lg-shadow-none w-full items-center">
