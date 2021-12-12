@@ -93,9 +93,9 @@ function Checkout() {
             </small>
           </div>
           <div className="my-4 h-32 px-4 h-full flex flex-col gap-2 w-full md:w-3/5">
-            {reduxState? reduxState.map((food) => (
+            {reduxState? (reduxState.map((food) => (
               <FoodItem {...food} key={food._id} />
-            )): <p>Cart is Empty</p>}
+            ))): (<>Cart is Empty</>)}
           </div>
           <div className="flex flex-col gap-3 w-full md:w-3/5">
             <h4 className="text-xl font-semibold">Choose Address</h4>
