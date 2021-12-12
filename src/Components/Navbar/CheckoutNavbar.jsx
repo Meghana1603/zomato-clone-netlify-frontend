@@ -5,6 +5,8 @@ import { AiOutlineArrowLeft } from "react-icons/ai";
 // Redux
 import { useSelector } from "react-redux";
 
+const BrowserHistory = require('react-router/lib/BrowserHistory').default;
+
 function CheckoutNavbar() {
   const reduxState = useSelector((globalStore) => globalStore.user.user);
   return (
@@ -12,7 +14,7 @@ function CheckoutNavbar() {
       <nav className="px-4 py-2 flex bg-white shadow-md lg-shadow-none w-full items-center">
         <div className="container px-4 md:px-20 mx-auto">
           <div className="flex w-full items-center justify-between">
-            <AiOutlineArrowLeft />
+          <button onClick={BrowserHistory.goBack}><AiOutlineArrowLeft /></button>
             <div className="flex gap-3">
               <div className="w-28">
                 <img
