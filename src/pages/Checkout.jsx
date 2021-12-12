@@ -63,11 +63,13 @@ function Checkout() {
     let razorPay = new window.Razorpay(options);
     razorPay.open();
     console.log(reduxState,"food") ;
-    reduxState.map((food) => (
+    console.log(reduxStateCart,"food cart") ;
+    globalStore.cart.cart.map((food) => (
       deleteFoodFromCart(food._id)
     ));
     console.log(reduxState,"food") ;
     console.log(reduxStateCart,"food cart") ;
+    console.log(globalStore.cart.cart,"Store");
   };
 
   return (
