@@ -62,15 +62,21 @@ function Checkout() {
 
     let razorPay = new window.Razorpay(options);
     razorPay.open();
-    console.log(reduxState,"food") ;
-    console.log(reduxStateCart,"food cart") ;
-    reduxState.map((food) => (
-      deleteFoodFromCart(food._id)
-    ));
-    reduxState=[];
-    reduxStateCart=[];
-    console.log(reduxState,"food") ;
-    console.log(reduxStateCart,"food cart") ;
+    let cartData = { cart: [] };
+
+    if (localStorage.zomatoCart) {
+      const { cart } = JSON.parse(localStorage.getItem("zomatoCart"));
+      cartData.cart = cart;
+    }
+
+    if (!cartData.cart.length) {
+      return dispatch({ type: "ERROR", payload: "Cart is Empty" });
+    }
+
+    cartData.cart = [];
+
+    localStorage.setItem("zomatoCart", JSON.stringify({ cart: cartData.cart }));
+
   };
 
   return (
