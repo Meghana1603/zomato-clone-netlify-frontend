@@ -16,6 +16,7 @@ function Checkout() {
     (globalStore) => globalStore.user.user.user
   );
   const dispatch = useDispatch();
+  const deleteFoodFromCart = (props) => dispatch(deleteCart(props._id));
   const [address] = useState([
     {
       name: "Home",
@@ -61,12 +62,10 @@ function Checkout() {
 
     let razorPay = new window.Razorpay(options);
     razorPay.open();
-    console.log(reduxStateCart) ;
-    console.log(reduxState) ;
+    console.log(reduxState,"food") ;
     reduxState.map((food) => (
-      deleteCart(food._id)
+      deleteFoodFromCart(food._id)
     ));
-    //window.location.href = "https://zomatoclone-netlify.netlify.app/delivery";
 
   };
 
