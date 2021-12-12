@@ -8,7 +8,6 @@ import AddressList from "../Components/Checkout/AddressList";
 // redux
 import { useSelector, useDispatch } from "react-redux";
 import { orderPlaced } from "../Redux/Reducer/Order/order.action";
-import { deleteCart } from "../Redux/Reducer/Cart/cart.action";
 
 function Checkout() {
   var reduxStateCart = useSelector((globalStore) => globalStore.cart.cart);
@@ -16,7 +15,6 @@ function Checkout() {
     (globalStore) => globalStore.user.user.user
   );
   const dispatch = useDispatch();
-  const deleteFoodFromCart = (props) => dispatch(deleteCart(props._id));
   const [address] = useState([
     {
       name: "Home",
@@ -48,22 +46,6 @@ function Checkout() {
       handler: function (data) {
         //console.log(reduxStateCart) ;
         alert("Payment Done");
-        let cartData = { cart: [] };
-
-    if (localStorage.zomatoCart) {
-      const { cart } = JSON.parse(localStorage.getItem("zomatoCart"));
-      cartData.cart = cart;
-    }
-
-    if (!cartData.cart.length) {
-      return dispatch({ type: "ERROR", payload: "Cart is Empty" });
-    }
-
-    cartData.cart = [];
-
-    localStorage.setItem("zomatoCart", JSON.stringify({ cart: cartData.cart }));
-    reduxState = useSelector((globalStore) => globalStore.cart.cart);
-
 
         // console.log(data.razorpay_payment_id);
         dispatch(orderPlaced(reduxStateCart, data.razorpay_payment_id));
@@ -79,6 +61,22 @@ function Checkout() {
 
     let razorPay = new window.Razorpay(options);
     razorPay.open();
+    let cartData = { cart: [] };
+
+    if (localStorage.zomatoCart) {
+      const { cart } = JSON.parse(localStorage.getItem("zomatoCart"));
+      cartData.cart = cart;
+    }
+
+    if (!cartData.cart.length) {
+      return dispatch({ type: "ERROR", payload: "Cart is Empty" });
+    }
+
+    cartData.cart = [];
+
+    localStorage.setItem("zomatoCart", JSON.stringify({ cart: cartData.cart }));
+    reduxState = useSelector((globalStore) => globalStore.cart.cart);
+    reduxStateCart = useSelector((globalStore) => globalStore.cart.cart);
     
   };
 
