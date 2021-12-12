@@ -75,8 +75,8 @@ function Checkout() {
     cartData.cart = [];
 
     localStorage.setItem("zomatoCart", JSON.stringify({ cart: cartData.cart }));
-    reduxState = cartData.cart;
-    reduxStateCart = cartData.cart;
+    reduxState = undefined;
+    reduxStateCart = undefined;
   };
 
   return (
