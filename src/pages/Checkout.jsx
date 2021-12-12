@@ -48,6 +48,23 @@ function Checkout() {
       handler: function (data) {
         //console.log(reduxStateCart) ;
         alert("Payment Done");
+        let cartData = { cart: [] };
+
+    if (localStorage.zomatoCart) {
+      const { cart } = JSON.parse(localStorage.getItem("zomatoCart"));
+      cartData.cart = cart;
+    }
+
+    if (!cartData.cart.length) {
+      return dispatch({ type: "ERROR", payload: "Cart is Empty" });
+    }
+
+    cartData.cart = [];
+
+    localStorage.setItem("zomatoCart", JSON.stringify({ cart: cartData.cart }));
+    reduxState = useSelector((globalStore) => globalStore.cart.cart);
+
+
         // console.log(data.razorpay_payment_id);
         dispatch(orderPlaced(reduxStateCart, data.razorpay_payment_id));
       },
@@ -62,21 +79,7 @@ function Checkout() {
 
     let razorPay = new window.Razorpay(options);
     razorPay.open();
-    let cartData = { cart: [] };
-
-    if (localStorage.zomatoCart) {
-      const { cart } = JSON.parse(localStorage.getItem("zomatoCart"));
-      cartData.cart = cart;
-    }
-
-    if (!cartData.cart.length) {
-      return dispatch({ type: "ERROR", payload: "Cart is Empty" });
-    }
-
-    cartData.cart = [];
-
-    localStorage.setItem("zomatoCart", JSON.stringify({ cart: cartData.cart }));
-
+    
   };
 
   return (
@@ -93,9 +96,9 @@ function Checkout() {
             </small>
           </div>
           <div className="my-4 h-32 px-4 h-full flex flex-col gap-2 w-full md:w-3/5">
-            {reduxState.map((food) => (
+            {reduxState? reduxState.map((food) => (
               <FoodItem {...food} key={food._id} />
-            ))}
+            )): <p>Cart is Empty</p>}
           </div>
           <div className="flex flex-col gap-3 w-full md:w-3/5">
             <h4 className="text-xl font-semibold">Choose Address</h4>
