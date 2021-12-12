@@ -8,6 +8,7 @@ import AddressList from "../Components/Checkout/AddressList";
 // redux
 import { useSelector, useDispatch } from "react-redux";
 import { orderPlaced } from "../Redux/Reducer/Order/order.action";
+import { deleteCart } from "../Redux/Reducer/Cart/cart.action";
 
 function Checkout() {
   const reduxStateCart = useSelector((globalStore) => globalStore.cart.cart);
@@ -44,9 +45,8 @@ function Checkout() {
       image:
         "https://b.zmtcdn.com/web_assets/b40b97e677bc7b2ca77c58c61db266fe1603954218.png",
       handler: function (data) {
+        console.log(globalStore.cart.cart);
         alert("Payment Done");
-        window.location.href = "https://zomatoclone-netlify.netlify.app/delivery";
-        globalStore.cart.cart = {};
         // console.log(data.razorpay_payment_id);
         dispatch(orderPlaced(reduxStateCart, data.razorpay_payment_id));
       },
@@ -61,6 +61,11 @@ function Checkout() {
 
     let razorPay = new window.Razorpay(options);
     razorPay.open();
+    reduxState.map((food) => (
+      deleteCart(food._id)
+    ));
+    window.location.href = "https://zomatoclone-netlify.netlify.app/delivery";
+
   };
 
   return (

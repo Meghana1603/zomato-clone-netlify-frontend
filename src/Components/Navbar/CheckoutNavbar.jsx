@@ -14,7 +14,7 @@ function CheckoutNavbar() {
       <nav className="px-4 py-2 flex bg-white shadow-md lg-shadow-none w-full items-center">
         <div className="container px-4 md:px-20 mx-auto">
           <div className="flex w-full items-center justify-between">
-          <button onClick={BrowserHistory.goBack}><AiOutlineArrowLeft /></button>
+          <button onClick={BrowserHistory.goBack}><AiOutlineArrowLeft />GoBack</button>
             <div className="flex gap-3">
               <div className="w-28">
                 <img
