@@ -11,8 +11,8 @@ import { orderPlaced } from "../Redux/Reducer/Order/order.action";
 import { deleteCart } from "../Redux/Reducer/Cart/cart.action";
 
 function Checkout() {
-  const reduxStateCart = useSelector((globalStore) => globalStore.cart.cart);
-  const reduxStateUser = useSelector(
+  var reduxStateCart = useSelector((globalStore) => globalStore.cart.cart);
+  var reduxStateUser = useSelector(
     (globalStore) => globalStore.user.user.user
   );
   const dispatch = useDispatch();
@@ -32,7 +32,7 @@ function Checkout() {
     },
   ]);
 
-  const reduxState = useSelector((globalStore) => globalStore.cart.cart);
+  var reduxState = useSelector((globalStore) => globalStore.cart.cart);
 
   const payNow = () => {
     let options = {
@@ -64,12 +64,13 @@ function Checkout() {
     razorPay.open();
     console.log(reduxState,"food") ;
     console.log(reduxStateCart,"food cart") ;
-    globalStore.cart.cart.map((food) => (
+    reduxState.map((food) => (
       deleteFoodFromCart(food._id)
     ));
+    reduxState=[];
+    reduxStateCart=[];
     console.log(reduxState,"food") ;
     console.log(reduxStateCart,"food cart") ;
-    console.log(globalStore.cart.cart,"Store");
   };
 
   return (
