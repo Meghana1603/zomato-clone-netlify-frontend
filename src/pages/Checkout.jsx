@@ -67,8 +67,8 @@ function Checkout() {
       deleteFoodFromCart(food._id)
     ));
     console.log(reduxState,"food") ;
-    reduxState={}
-    console.log(reduxState,"food") ;
+    reduxStateCart={}
+    console.log(reduxStateCart,"food cart") ;
   };
 
   return (
