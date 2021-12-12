@@ -45,10 +45,11 @@ function Checkout() {
         "https://b.zmtcdn.com/web_assets/b40b97e677bc7b2ca77c58c61db266fe1603954218.png",
       handler: function (data) {
         //console.log(reduxStateCart) ;
-        alert("Payment Done");
+        await alert("Payment Done");
 
         // console.log(data.razorpay_payment_id);
         dispatch(orderPlaced(reduxStateCart, data.razorpay_payment_id));
+        window.location.reload();
       },
       prefill: {
         name: reduxStateUser.fullName,
@@ -75,8 +76,8 @@ function Checkout() {
     cartData.cart = [];
 
     localStorage.setItem("zomatoCart", JSON.stringify({ cart: cartData.cart }));
-    reduxState = undefined;
-    reduxStateCart = undefined;
+    reduxState = null;
+    reduxStateCart = null;
   };
 
   return (
